@@ -70,9 +70,9 @@ class PizzaById(Resource):
             data = Pizza.query.filter(Pizza.id == id).first()
 
             if isinstance(data, Pizza):
-                return data.to_dict(only=('restaurant_pizzas',)), 200
+                return data.to_dict(only=('id','ingredients','name',)), 200
             else:
-                return {"error" : "Restaurant not found"}, 404
+                return {"error" : "Pizza not found"}, 404
             
         except Exception as e:
             return str(e), 404
